@@ -5,9 +5,11 @@ galaxy_info:
   license: license (GPLv2, CC-BY, etc)
 
   min_ansible_version: 1.2
-
-  galaxy_tags:
-    timezone
-    centos7
+  platforms:
+  - name: CentOS
+    versions:
+    - all
+  categories:
+  - system
 
 dependencies: []
