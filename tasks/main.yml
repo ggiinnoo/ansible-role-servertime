@@ -1,0 +1,16 @@
+---
+- name: move old timezone file
+  copy:
+    src: "/etc/localtime"
+    dest: "/root/localtime.old"
+
+- name: remove old localtime file
+  file:
+    name: "/etc/localtime"
+    state: absent
+
+- name: Place new timezone file
+  file:
+    state: link
+    src: "/usr/share/zoneinfo/{{ timeZone }}"
+    dest: "/etc/localtime"
