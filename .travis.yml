@@ -8,21 +8,20 @@ services:
 env:
   - OS_VERSION=7
   - OS_VERSION=6
-  - ROLE_NAME=ansible-servertime
 
 before_install:
   - sudo docker pull centos:${OS_VERSION}
 
 install:
-  - sudo docker run --detach --volume="${PWD}":/etc/ansible/roles/${ROLE_NAME}:ro --name centos-${OS_VERSION} centos:${OS_VERSION} sleep 300
+  - sudo docker run --detach --volume="${PWD}":/etc/ansible/roles/ansible-servertime:ro --name centos-${OS_VERSION} centos:${OS_VERSION} sleep 300
   - sudo docker exec centos-${OS_VERSION} yum -y install epel-release
   - sudo docker exec centos-${OS_VERSION} yum -y install ansible
 
 script:
   # Check syntax of ansible playbook
-  - sudo docker exec centos-${OS_VERSION} ansible-playbook /etc/ansible/roles/${ROLE_NAME}/tests/test.yml --syntax-check
+  - sudo docker exec centos-${OS_VERSION} ansible-playbook /etc/ansible/roles/ansible-servertime/tests/test.yml --syntax-check
   # Run ansible playbook
-  - sudo docker exec centos-${OS_VERSION} ansible-playbook /etc/ansible/roles/${ROLE_NAME}/tests/test.yml
+  - sudo docker exec centos-${OS_VERSION} ansible-playbook /etc/ansible/roles/ansible-servertime/tests/test.yml
 
 after_script:
   - sudo docker stop centos-${OS_VERSION}
