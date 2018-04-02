@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ggiinnoo/ansible-servertime.svg?branch=release%2F1.0.x)](https://travis-ci.org/ggiinnoo/ansible-servertime)
+
 Server Time
 =========
 
